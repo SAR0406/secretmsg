@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Gift, Sparkles, Star, Heart, HeartHandshake, Camera } from "lucide-react";
+import { Calendar, Gift, Sparkles, Star, Heart, HeartHandshake, Camera, MapPin, Milestone } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -11,22 +11,31 @@ const ourMomentImage = PlaceHolderImages.find(p => p.id === "our-moment");
 
 const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"));
 
-const loveNotes = [
+const timelineEvents = [
   {
-    icon: <Sparkles className="w-10 h-10 text-accent drop-shadow-lg" />,
-    title: "My Dearest, 💖",
-    message: "Every single moment spent with you is a moment I treasure. Your smile brightens my entire world, and your laughter is the sweetest music to my ears. You are my everything. 🥰",
+    icon: <Heart className="w-8 h-8 text-accent drop-shadow-lg" />,
+    title: "The Day We Met",
+    date: "October 23, 2023",
+    description: "Where our story began. A day that changed my life forever.",
   },
   {
-    icon: <Gift className="w-10 h-10 text-accent drop-shadow-lg" />,
-    title: "Remember When? ✨",
-    message: "I'll never forget our first date. The way you looked at me made my heart skip a beat. From that day on, I knew my life had changed forever, and for the better. ❤️",
+    icon: <Sparkles className="w-8 h-8 text-accent drop-shadow-lg" />,
+    title: "Our First Date",
+    date: "November 5, 2023",
+    description: "The beginning of countless adventures and beautiful memories.",
   },
   {
-    icon: <Star className="w-10 h-10 text-accent drop-shadow-lg" />,
-    title: "My Promise 💍",
-    message: "I promise to always be your biggest fan and your staunchest supporter. I promise to hold your hand through every storm and celebrate every triumph. My love for you is eternal. 🔐",
+    icon: <Milestone className="w-8 h-8 text-accent drop-shadow-lg" />,
+    title: "Became Inseparable",
+    date: "December 1, 2023",
+    description: "The moment I knew you were the one I wanted to share my life with.",
   },
+  {
+    icon: <Star className="w-8 h-8 text-accent drop-shadow-lg" />,
+    title: "A Promise Made",
+    date: "January 1, 2024",
+    description: "A promise of love, support, and a future together. My commitment to you.",
+  }
 ];
 
 const reasonsILoveYou = [
@@ -71,20 +80,29 @@ export default function MainScreen() {
         <p className="font-body text-xl md:text-2xl mt-4 text-foreground/80 italic">With all my love, forever and always.</p>
 
         <div className="w-full mt-16 md:mt-24 space-y-12">
-            <section id="notes">
+            <section id="journey">
                 <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.02]">
                     <CardHeader>
                         <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-4">
-                            <Heart className="w-10 h-10 drop-shadow-lg"/> A Message For You
+                            <MapPin className="w-10 h-10 drop-shadow-lg"/> Our Journey
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-6">
-                         {loveNotes.map((note, index) => (
-                            <div key={index} className="text-left p-4 rounded-lg bg-secondary/50">
-                                <h3 className="font-body font-semibold text-lg flex items-center gap-3 mb-1">{note.icon}{note.title}</h3>
-                                <p className="font-body text-foreground/90 leading-relaxed italic">"{note.message}"</p>
+                    <CardContent className="space-y-8">
+                      <div className="relative pl-8">
+                        <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-primary/30"></div>
+                        {timelineEvents.map((event, index) => (
+                          <div key={index} className="relative flex items-start gap-6">
+                            <div className="absolute left-4 top-4 -translate-x-1/2 w-8 h-8 bg-background rounded-full border-2 border-primary flex items-center justify-center">
+                              <div className="w-3 h-3 bg-primary rounded-full"></div>
                             </div>
+                            <div className="p-4 rounded-lg bg-secondary/50 text-left flex-1">
+                                <h3 className="font-body font-semibold text-lg flex items-center gap-3 mb-1 text-primary">{event.icon}{event.title}</h3>
+                                <p className="text-sm text-muted-foreground font-semibold mb-2">{event.date}</p>
+                                <p className="font-body text-foreground/90 leading-relaxed italic">"{event.description}"</p>
+                            </div>
+                          </div>
                         ))}
+                      </div>
                     </CardContent>
                 </Card>
             </section>
@@ -157,5 +175,3 @@ export default function MainScreen() {
     </div>
   );
 }
-
-    
