@@ -4,10 +4,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Camera, MapPin, Heart, Sparkles, Milestone, Star, HeartHandshake } from "lucide-react";
+import { Camera, MapPin, Heart, Sparkles, Milestone, HeartHandshake } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "./ui/button";
 
 const ourMomentImage = PlaceHolderImages.find(p => p.id === "our-moment");
 
@@ -28,12 +29,17 @@ const timelineEvents = [
     icon: <Milestone className="w-8 h-8 text-accent drop-shadow-lg" />,
     title: "Became Inseparable",
     description: "The moment I knew you were the one I wanted to share my life with.",
-  },
-  {
-    icon: <Star className="w-8 h-8 text-accent drop-shadow-lg" />,
-    title: "A Promise Made",
-    description: "A promise of love, support, and a future together. My commitment to you.",
   }
+];
+
+const promises = [
+    "To always be your biggest supporter.",
+    "To make you laugh, especially when you need it most.",
+    "To create a home filled with warmth and love.",
+    "To never stop exploring the world with you.",
+    "To be your partner in crime, forever and always.",
+    "To listen, even when we don't agree.",
+    "To remind you every day how much you mean to me."
 ];
 
 const reasonsILoveYou = [
@@ -47,6 +53,12 @@ const reasonsILoveYou = [
 
 export default function MainScreen() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentPromise, setCurrentPromise] = useState("Click the button to see a promise...");
+
+  const revealPromise = () => {
+    const randomIndex = Math.floor(Math.random() * promises.length);
+    setCurrentPromise(promises[randomIndex]);
+  };
 
   return (
     <div className="animate-in fade-in-0 duration-1000 bg-background/50 text-foreground min-h-screen">
@@ -58,7 +70,7 @@ export default function MainScreen() {
               alt={ourMomentImage.description}
               fill
               className="object-cover"
-              data-ai-hint={ourMoment-image.imageHint}
+              data-ai-hint={ourMomentImage.imageHint}
               priority
             />
           </div>
@@ -90,7 +102,7 @@ export default function MainScreen() {
                       <div className="relative pl-8">
                         <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-primary/30"></div>
                         {timelineEvents.map((event, index) => (
-                          <div key={index} className="relative flex items-start gap-6">
+                          <div key={index} className="relative flex items-start gap-6 mb-6">
                             <div className="absolute left-4 top-4 -translate-x-1/2 w-8 h-8 bg-background rounded-full border-2 border-primary flex items-center justify-center">
                               <div className="w-3 h-3 bg-primary rounded-full"></div>
                             </div>
@@ -100,6 +112,21 @@ export default function MainScreen() {
                             </div>
                           </div>
                         ))}
+                        {/* Promise Box */}
+                        <div className="relative flex items-start gap-6">
+                            <div className="absolute left-4 top-4 -translate-x-1/2 w-8 h-8 bg-background rounded-full border-2 border-primary flex items-center justify-center">
+                              <div className="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <div className="p-4 rounded-lg bg-secondary/50 text-left flex-1">
+                                <h3 className="font-body font-semibold text-lg flex items-center gap-3 mb-2 text-primary">
+                                    <HeartHandshake className="w-8 h-8 text-accent drop-shadow-lg"/> A Promise Made
+                                </h3>
+                                <p className="font-body text-foreground/90 leading-relaxed italic h-12 flex items-center animate-in fade-in duration-500">
+                                    "{currentPromise}"
+                                </p>
+                                <Button onClick={revealPromise} size="sm" className="mt-2">Reveal a Promise</Button>
+                            </div>
+                          </div>
                       </div>
                     </CardContent>
                 </Card>
