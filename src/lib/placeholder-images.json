@@ -47,6 +47,12 @@
       "description": "A couple sharing a coffee at a cozy cafe.",
       "imageUrl": "https://images.unsplash.com/photo-1700408536381-6f7e9e400feb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb3VwbGUlMjBjYWZlfGVufDB8fHx8MTc2Mzk1NTQ1OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "couple cafe"
+    },
+    {
+      "id": "gallery-7",
+      "description": "A special moment for the couple.",
+      "imageUrl": "https://i.ibb.co/7JKqdbC/IMG-20251123-WA0017.jpg",
+      "imageHint": "couple portrait"
     }
   ]
 }
