@@ -1,52 +1,93 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import LoginScreen from '@/components/login-screen';
 import MainScreen from '@/components/main-screen';
 import { useToast } from '@/hooks/use-toast';
 import Confetti from '@/components/confetti';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Heart } from 'lucide-react';
 
 const SECRET_CODE = "2310";
 
 export default function Home() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [code, setCode] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
-    // This check runs only on the client, after the component has mounted.
+    // This check runs only on the client.
     const authenticated = sessionStorage.getItem('isAuthenticated') === 'true';
-    setIsAuthenticated(authenticated);
+    if (authenticated) {
+      setIsAuthenticated(true);
+    } else {
+      // Use a short timeout to ensure the main screen has a moment to render before blurring
+      const timer = setTimeout(() => setShowLoginDialog(true), 100);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
-  const handleLogin = (code: string) => {
+  const handleLogin = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (code === SECRET_CODE) {
       sessionStorage.setItem('isAuthenticated', 'true');
       setIsAuthenticated(true);
-      return true;
+      setShowLoginDialog(false);
+      toast({
+        title: "Welcome Back, My Love! 💕",
+        description: "Our world is unlocked.",
+      });
     } else {
       toast({
         variant: "destructive",
         title: "Wrong Code 🤔",
         description: "That's not the secret code, my love. Try again!",
       });
-      return false;
+      setCode('');
     }
   };
 
-  // While we're checking for authentication on the client, show a loading state.
-  if (isAuthenticated === null) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-background text-foreground">
-        Loading...
-      </div>
-    );
-  }
-
-  // Once the check is complete, render the correct screen.
   return (
     <>
       <Confetti />
-      {isAuthenticated ? <MainScreen /> : <LoginScreen onLogin={handleLogin} />}
+      <MainScreen />
+
+      <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
+        <DialogContent 
+            className="w-full max-w-sm shadow-2xl bg-card/80 backdrop-blur-sm z-50 border-primary/20" 
+            onInteractOutside={(e) => e.preventDefault()}
+            onEscapeKeyDown={(e) => e.preventDefault()}
+        >
+          <DialogHeader className="text-center items-center pt-6">
+            <div className="p-4 bg-primary/10 rounded-full mb-4 relative">
+               <Heart className="w-16 h-16 text-primary" fill="currentColor" />
+            </div>
+            <DialogTitle className="font-headline text-5xl text-primary">Eternal Flame ✨</DialogTitle>
+            <DialogDescription className="font-body text-foreground/80 pt-2 text-base">
+              Enter the secret code to unlock our world.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleLogin}>
+            <div className="p-6 pt-0">
+              <Input
+                type="password"
+                placeholder="Our Secret"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                className="text-center font-code tracking-widest text-lg h-12 bg-background/50 text-foreground"
+                aria-label="Secret Code"
+              />
+            </div>
+            <DialogFooter>
+              <Button type="submit" className="w-full font-headline text-xl" size="lg">
+                Unlock Our World 💖
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
