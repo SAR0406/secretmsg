@@ -8,6 +8,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const heroImage = PlaceHolderImages.find(p => p.id === "hero");
 const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"));
+const ourMomentImage = PlaceHolderImages.find(p => p.id === "our-moment");
 
 const loveNotes = [
   {
@@ -71,7 +72,24 @@ export default function MainScreen() {
           </div>
         </section>
 
-        <section id="gallery" className="py-16 md:py-24 bg-secondary/30">
+        <section id="our-moment" className="py-16 md:py-24 bg-secondary/30">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Our Special Moment</h2>
+            {ourMomentImage && (
+              <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white transform transition-transform duration-500 hover:scale-110">
+                <Image
+                  src={ourMomentImage.imageUrl}
+                  alt={ourMomentImage.description}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={ourMomentImage.imageHint}
+                />
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section id="gallery" className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Our Gallery</h2>
             <Carousel
