@@ -12,17 +12,17 @@ const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"))
 
 const loveNotes = [
   {
-    icon: <Sparkles className="w-6 h-6 text-accent" />,
+    icon: <Sparkles className="w-8 h-8 text-accent" />,
     title: "My Dearest, 💖",
     message: "Every single moment spent with you is a moment I treasure. Your smile brightens my entire world, and your laughter is the sweetest music to my ears. You are my everything. 🥰",
   },
   {
-    icon: <Gift className="w-6 h-6 text-accent" />,
+    icon: <Gift className="w-8 h-8 text-accent" />,
     title: "Remember When? ✨",
     message: "I'll never forget our first date. The way you looked at me made my heart skip a beat. From that day on, I knew my life had changed forever, and for the better. ❤️",
   },
   {
-    icon: <Star className="w-6 h-6 text-accent" />,
+    icon: <Star className="w-8 h-8 text-accent" />,
     title: "My Promise 💍",
     message: "I promise to always be your biggest fan and your staunchest supporter. I promise to hold your hand through every storm and celebrate every triumph. My love for you is eternal. 🔐",
   },
@@ -43,7 +43,7 @@ export default function MainScreen() {
     <div className="animate-in fade-in-0 duration-1000 bg-background text-foreground min-h-screen">
       <main className="container mx-auto px-4 py-16 md:py-24 max-w-2xl flex flex-col items-center text-center">
         {ourMomentImage && (
-          <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-primary/50 transform transition-transform duration-500 hover:scale-110 mb-8">
+          <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-primary/50 animate-pulse-slow mb-8">
             <Image
               src={ourMomentImage.imageUrl}
               alt={ourMomentImage.description}
@@ -60,16 +60,16 @@ export default function MainScreen() {
 
         <div className="w-full mt-16 md:mt-24 space-y-12">
             <section id="notes">
-                <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl">
+                <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.02]">
                     <CardHeader>
-                        <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-3">
-                            <Heart className="w-8 h-8"/> A Message For You
+                        <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-4">
+                            <Heart className="w-10 h-10 drop-shadow-lg"/> A Message For You
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                          {loveNotes.map((note, index) => (
                             <div key={index} className="text-left p-4 rounded-lg bg-secondary/50">
-                                <h3 className="font-body font-semibold text-lg flex items-center gap-2 mb-1">{note.icon}{note.title}</h3>
+                                <h3 className="font-body font-semibold text-lg flex items-center gap-3 mb-1">{note.icon}{note.title}</h3>
                                 <p className="font-body text-foreground/90 leading-relaxed italic">"{note.message}"</p>
                             </div>
                         ))}
@@ -78,10 +78,10 @@ export default function MainScreen() {
             </section>
             
             <section id="gallery">
-                 <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl overflow-hidden">
+                 <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-primary/20 hover:scale-[1.02]">
                     <CardHeader>
-                        <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-3">
-                            <Camera className="w-8 h-8"/> Our Memories
+                        <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-4">
+                            <Camera className="w-10 h-10 drop-shadow-lg"/> Our Memories
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -120,10 +120,10 @@ export default function MainScreen() {
             </section>
             
             <section id="reasons">
-                <Card className="bg-card/50 backdrop-blur-sm border-accent/20 shadow-xl">
+                <Card className="bg-card/50 backdrop-blur-sm border-accent/20 shadow-xl transition-all duration-300 hover:shadow-accent/20 hover:scale-[1.02]">
                     <CardHeader>
-                        <CardTitle className="font-headline text-4xl text-accent flex items-center justify-center gap-3">
-                            <HeartHandshake className="w-8 h-8"/> Reasons I Love You
+                        <CardTitle className="font-headline text-4xl text-accent flex items-center justify-center gap-4">
+                            <HeartHandshake className="w-10 h-10 drop-shadow-lg"/> Reasons I Love You
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
