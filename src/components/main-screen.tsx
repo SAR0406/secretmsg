@@ -198,6 +198,7 @@ export default function MainScreen() {
 
       <footer className="text-center py-10 mt-16 border-t border-border">
           <p className="font-headline text-2xl text-secondary-foreground">Forever & Always ❤️</p>
+          <p className="font-body text-lg text-muted-foreground mt-2">with love , sarthak 💗</p>
       </footer>
 
       <Dialog open={selectedImage !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
