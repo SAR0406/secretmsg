@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import LoginScreen from '@/components/login-screen';
 import MainScreen from '@/components/main-screen';
 import { useToast } from '@/hooks/use-toast';
+import Confetti from '@/components/confetti';
 
 const SECRET_CODE = "2310";
 
@@ -45,6 +46,7 @@ export default function Home() {
 
   return (
     <>
+      <Confetti />
       {isAuthenticated ? <MainScreen /> : <LoginScreen onLogin={handleLogin} />}
     </>
   );
