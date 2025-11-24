@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Gift, Sparkles, Star, HeartHandshake } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import Countdown from "@/components/countdown";
 
 const heroImage = PlaceHolderImages.find(p => p.id === "hero");
 const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"));
@@ -40,7 +39,6 @@ const reasonsILoveYou = [
 
 
 export default function MainScreen() {
-  const specialDate = new Date("2024-10-23T00:00:00");
 
   return (
     <div className="animate-in fade-in-0 duration-1000 bg-background">
@@ -63,15 +61,7 @@ export default function MainScreen() {
       </header>
 
       <main>
-        <section id="countdown" className="py-16 md:py-24 bg-secondary/30">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-4">Our Special Day</h2>
-            <p className="font-body text-foreground/80 text-lg mb-8">Counting down every second until we celebrate...</p>
-            <Countdown targetDate={specialDate.toISOString()} />
-          </div>
-        </section>
-
-        <section id="notes" className="py-16 md:py-24">
+        <section id="notes" className="py-16 md:py-24 bg-secondary/30">
            <div className="container mx-auto px-4">
             <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Love Letters</h2>
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -92,7 +82,7 @@ export default function MainScreen() {
           </div>
         </section>
         
-        <section id="reasons" className="py-16 md:py-24 bg-secondary/30">
+        <section id="reasons" className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Reasons I Love You</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -108,7 +98,7 @@ export default function MainScreen() {
           </div>
         </section>
 
-        <section id="our-moment" className="py-16 md:py-24">
+        <section id="our-moment" className="py-16 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Our Special Moment</h2>
             {ourMomentImage && (
