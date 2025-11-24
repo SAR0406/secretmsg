@@ -9,16 +9,13 @@ import Confetti from '@/components/confetti';
 const SECRET_CODE = "2310";
 
 export default function Home() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
-    setIsClient(true);
-    // Check if user is already authenticated in session storage
-    if (sessionStorage.getItem('isAuthenticated') === 'true') {
-      setIsAuthenticated(true);
-    }
+    // This check runs only on the client, after the component has mounted.
+    const authenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+    setIsAuthenticated(authenticated);
   }, []);
 
   const handleLogin = (code: string) => {
@@ -36,14 +33,16 @@ export default function Home() {
     }
   };
 
-  if (!isClient) {
+  // While we're checking for authentication on the client, show a loading state.
+  if (isAuthenticated === null) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-background">
-        {/* You can add a loader here */}
+      <div className="flex items-center justify-center min-h-screen bg-background text-foreground">
+        Loading...
       </div>
     );
   }
 
+  // Once the check is complete, render the correct screen.
   return (
     <>
       <Confetti />
