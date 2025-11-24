@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A couple silhouetted against a beautiful sunset on a beach.",
+      "imageUrl": "https://images.unsplash.com/photo-1542460533-50ac46fb13d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb3VwbGUlMjBzdW5zZXR8ZW58MHx8fHwxNzYzOTE2Nzg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple sunset"
+    },
+    {
+      "id": "gallery-1",
+      "description": "A happy couple laughing together in a park.",
+      "imageUrl": "https://images.unsplash.com/photo-1656017054238-f08a0e1482fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3VwbGUlMjBsYXVnaGluZ3xlbnwwfHx8fDE3NjM4OTgwMzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple laughing"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Close-up of a couple holding hands.",
+      "imageUrl": "https://images.unsplash.com/photo-1523251636652-de976ff82054?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aG9sZGluZyUyMGhhbmRzfGVufDB8fHx8MTc2Mzk3NDAzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "holding hands"
+    },
+    {
+      "id": "gallery-3",
+      "description": "A couple enjoying a scenic view while traveling.",
+      "imageUrl": "https://images.unsplash.com/photo-1656558136312-71b8f36bea25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb3VwbGUlMjB0cmF2ZWx8ZW58MHx8fHwxNzYzOTE2Nzg4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple travel"
+    },
+    {
+      "id": "gallery-4",
+      "description": "A couple having a romantic candlelit dinner.",
+      "imageUrl": "https://images.unsplash.com/photo-1611765083444-a3ce30f1c885?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxyb21hbnRpYyUyMGRpbm5lcnxlbnwwfHx8fDE3NjM5MzAyNzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "romantic dinner"
+    },
+    {
+      "id": "gallery-5",
+      "description": "A couple dancing under the stars.",
+      "imageUrl": "https://images.unsplash.com/photo-1598976702854-b7130d73ca18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb3VwbGUlMjBkYW5jaW5nfGVufDB8fHx8MTc2Mzk2NjMzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple dancing"
+    },
+    {
+      "id": "gallery-6",
+      "description": "A couple sharing a coffee at a cozy cafe.",
+      "imageUrl": "https://images.unsplash.com/photo-1700408536381-6f7e9e400feb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb3VwbGUlMjBjYWZlfGVufDB8fHx8MTc2Mzk1NTQ1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple cafe"
+    }
+  ]
 }
