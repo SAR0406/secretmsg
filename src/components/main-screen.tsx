@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Gift, Sparkles, Star, Heart, HeartHandshake } from "lucide-react";
+import { Gift, Sparkles, Star, Heart, HeartHandshake, Camera } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const ourMomentImage = PlaceHolderImages.find(p => p.id === "our-moment");
+
+const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"));
 
 const loveNotes = [
   {
@@ -70,6 +73,48 @@ export default function MainScreen() {
                                 <p className="font-body text-foreground/90 leading-relaxed italic">"{note.message}"</p>
                             </div>
                         ))}
+                    </CardContent>
+                </Card>
+            </section>
+            
+            <section id="gallery">
+                 <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-xl overflow-hidden">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-4xl text-primary flex items-center justify-center gap-3">
+                            <Camera className="w-8 h-8"/> Our Memories
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                       <Carousel
+                          opts={{
+                            align: "start",
+                            loop: true,
+                          }}
+                          className="w-full max-w-xs sm:max-w-sm md:max-w-lg mx-auto"
+                        >
+                          <CarouselContent>
+                            {galleryImages.map((image, index) => (
+                              <CarouselItem key={index} className="md:basis-1/2">
+                                <div className="p-1">
+                                  <Card className="overflow-hidden">
+                                    <CardContent className="flex aspect-square items-center justify-center p-0">
+                                      <Image
+                                        src={image.imageUrl}
+                                        alt={image.description}
+                                        width={400}
+                                        height={400}
+                                        className="object-cover w-full h-full"
+                                        data-ai-hint={image.imageHint}
+                                      />
+                                    </CardContent>
+                                  </Card>
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                        </Carousel>
                     </CardContent>
                 </Card>
             </section>
