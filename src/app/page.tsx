@@ -16,8 +16,10 @@ export default function Home() {
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [code, setCode] = useState('');
   const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     // This check runs only on the client.
     const authenticated = sessionStorage.getItem('isAuthenticated') === 'true';
     if (authenticated) {
@@ -48,6 +50,10 @@ export default function Home() {
       setCode('');
     }
   };
+  
+  if (!isClient) {
+    return null; // Or a loading spinner
+  }
 
   return (
     <>
@@ -62,7 +68,7 @@ export default function Home() {
         >
           <DialogHeader className="text-center items-center pt-6">
             <div className="p-4 bg-primary/10 rounded-full mb-4 relative">
-               <Heart className="w-16 h-16 text-primary" fill="currentColor" />
+               <Heart className="w-16 h-16 text-primary animate-pulse" fill="currentColor" />
             </div>
             <DialogTitle className="font-headline text-5xl text-primary">Eternal Flame ✨</DialogTitle>
             <DialogDescription className="font-body text-foreground/80 pt-2 text-base">
