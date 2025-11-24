@@ -52,13 +52,16 @@ export default function Home() {
   };
   
   if (!isClient) {
-    return null; // Or a loading spinner
+    // Or a loading spinner, but null is fine to prevent flash of unstyled content
+    return null;
   }
 
   return (
     <>
       <Starfield />
-      <MainScreen />
+      <div className={showLoginDialog ? 'blur-sm' : ''}>
+        <MainScreen />
+      </div>
 
       <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
         <DialogContent 
