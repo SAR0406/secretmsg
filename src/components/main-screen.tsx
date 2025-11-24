@@ -15,25 +15,21 @@ const timelineEvents = [
   {
     icon: <Heart className="w-8 h-8 text-accent drop-shadow-lg" />,
     title: "The Day We Met",
-    date: "October 23, 2023",
     description: "Where our story began. A day that changed my life forever.",
   },
   {
     icon: <Sparkles className="w-8 h-8 text-accent drop-shadow-lg" />,
     title: "Our First Date",
-    date: "November 5, 2023",
     description: "The beginning of countless adventures and beautiful memories.",
   },
   {
     icon: <Milestone className="w-8 h-8 text-accent drop-shadow-lg" />,
     title: "Became Inseparable",
-    date: "December 1, 2023",
     description: "The moment I knew you were the one I wanted to share my life with.",
   },
   {
     icon: <Star className="w-8 h-8 text-accent drop-shadow-lg" />,
     title: "A Promise Made",
-    date: "January 1, 2024",
     description: "A promise of love, support, and a future together. My commitment to you.",
   }
 ];
@@ -87,7 +83,7 @@ export default function MainScreen() {
                             <MapPin className="w-10 h-10 drop-shadow-lg"/> Our Journey
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-8">
+                    <CardContent className="space-y-6">
                       <div className="relative pl-8">
                         <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-primary/30"></div>
                         {timelineEvents.map((event, index) => (
@@ -97,7 +93,6 @@ export default function MainScreen() {
                             </div>
                             <div className="p-4 rounded-lg bg-secondary/50 text-left flex-1">
                                 <h3 className="font-body font-semibold text-lg flex items-center gap-3 mb-1 text-primary">{event.icon}{event.title}</h3>
-                                <p className="text-sm text-muted-foreground font-semibold mb-2">{event.date}</p>
                                 <p className="font-body text-foreground/90 leading-relaxed italic">"{event.description}"</p>
                             </div>
                           </div>
