@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Gift, Sparkles, Star, Heart, HeartHandshake, Camera, MapPin, Milestone } from "lucide-react";
+import { Camera, MapPin, Heart, Sparkles, Milestone, Star, HeartHandshake } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
