@@ -1,11 +1,13 @@
 
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Camera, MapPin, Heart, Sparkles, Milestone, Star, HeartHandshake } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const ourMomentImage = PlaceHolderImages.find(p => p.id === "our-moment");
 
@@ -44,6 +46,7 @@ const reasonsILoveYou = [
 ];
 
 export default function MainScreen() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div className="animate-in fade-in-0 duration-1000 bg-background/50 text-foreground min-h-screen">
@@ -55,7 +58,7 @@ export default function MainScreen() {
               alt={ourMomentImage.description}
               fill
               className="object-cover"
-              data-ai-hint={ourMomentImage.imageHint}
+              data-ai-hint={ourMoment-image.imageHint}
               priority
             />
           </div>
@@ -123,14 +126,16 @@ export default function MainScreen() {
                                 <div className="p-1">
                                   <Card className="overflow-hidden">
                                     <CardContent className="flex aspect-square items-center justify-center p-0">
-                                      <Image
-                                        src={image.imageUrl}
-                                        alt={image.description}
-                                        width={400}
-                                        height={400}
-                                        className="object-cover w-full h-full"
-                                        data-ai-hint={image.imageHint}
-                                      />
+                                      <div className="cursor-pointer w-full h-full" onClick={() => setSelectedImage(image.imageUrl)}>
+                                        <Image
+                                          src={image.imageUrl}
+                                          alt={image.description}
+                                          width={400}
+                                          height={400}
+                                          className="object-cover w-full h-full"
+                                          data-ai-hint={image.imageHint}
+                                        />
+                                      </div>
                                     </CardContent>
                                   </Card>
                                 </div>
@@ -167,6 +172,20 @@ export default function MainScreen() {
       <footer className="text-center py-10 mt-16 border-t border-border">
           <p className="font-headline text-2xl text-secondary-foreground">Forever & Always ❤️</p>
       </footer>
+
+      <Dialog open={selectedImage !== null} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
+        <DialogContent className="max-w-3xl p-0 bg-transparent border-0">
+          {selectedImage && (
+            <Image
+              src={selectedImage}
+              alt="Enlarged gallery image"
+              width={1200}
+              height={800}
+              className="rounded-lg object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
