@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Gift, Sparkles, Star } from "lucide-react";
+import { Gift, Sparkles, Star, HeartHandshake } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Countdown from "@/components/countdown";
 
@@ -27,6 +27,15 @@ const loveNotes = [
     title: "My Promise",
     message: "I promise to always be your biggest fan and your staunchest supporter. I promise to hold your hand through every storm and celebrate every triumph. My love for you is eternal.",
   },
+];
+
+const reasonsILoveYou = [
+  "Your infectious laugh and the way your eyes light up when you smile.",
+  "Your incredible kindness and compassion for everyone you meet.",
+  "The way you make me feel safe, loved, and completely at home.",
+  "Your unwavering support for my dreams, no matter how big or small.",
+  "Our late-night talks that turn into early-morning giggles.",
+  "Your amazing sense of adventure and willingness to try new things with me."
 ];
 
 
@@ -82,8 +91,24 @@ export default function MainScreen() {
             </div>
           </div>
         </section>
+        
+        <section id="reasons" className="py-16 md:py-24 bg-secondary/30">
+          <div className="container mx-auto px-4">
+            <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Reasons I Love You</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {reasonsILoveYou.map((reason, index) => (
+                <Card key={index} className="bg-card/80 backdrop-blur-sm border-primary/10 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 100}ms`}}>
+                  <CardContent className="p-6 flex items-center gap-4">
+                    <HeartHandshake className="w-10 h-10 text-accent flex-shrink-0" />
+                    <p className="font-body text-lg text-foreground/90 italic">{reason}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        <section id="our-moment" className="py-16 md:py-24 bg-secondary/30">
+        <section id="our-moment" className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-headline text-5xl md:text-6xl text-center text-primary mb-12">Our Special Moment</h2>
             {ourMomentImage && (
