@@ -28,7 +28,7 @@ export default function Home() {
     } else {
       toast({
         variant: "destructive",
-        title: "Wrong Code",
+        title: "Wrong Code 🤔",
         description: "That's not the secret code, my love. Try again!",
       });
       return false;

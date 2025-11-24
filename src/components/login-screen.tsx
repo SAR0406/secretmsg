@@ -29,7 +29,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
              <Heart className="w-16 h-16 text-primary" fill="currentColor" />
              <Heart className="w-16 h-16 text-white absolute top-4 left-4 animate-ping opacity-50" fill="currentColor" />
           </div>
-          <CardTitle className="font-headline text-5xl text-primary">Eternal Flame</CardTitle>
+          <CardTitle className="font-headline text-5xl text-primary">Eternal Flame ✨</CardTitle>
           <CardDescription className="font-body text-foreground/80 pt-2 text-base">Enter the secret code to unlock our world.</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full font-headline text-xl" size="lg">
-              Unlock Our World
+              Unlock Our World 💖
             </Button>
           </CardFooter>
         </form>
