@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -65,7 +66,7 @@ export default function MainScreen() {
           className="font-headline text-4xl md:text-5xl mt-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-red-500 animate-in fade-in-0 delay-300"
            style={{ filter: 'drop-shadow(0 0 1rem rgb(236 72 153 / 0.5))' }}
         >
-          I love you 😘
+          I love you Cookie 💗✨💖
         </p>
         <p className="font-body text-xl md:text-2xl mt-4 text-foreground/80 italic">With all my love, forever and always.</p>
 
@@ -156,3 +157,5 @@ export default function MainScreen() {
     </div>
   );
 }
+
+    
