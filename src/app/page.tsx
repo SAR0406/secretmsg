@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import MainScreen from '@/components/main-screen';
 import { useToast } from '@/hooks/use-toast';
-import Confetti from '@/components/confetti';
+import Starfield from '@/components/starfield';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <>
-      <Confetti />
+      <Starfield />
       <MainScreen />
 
       <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>

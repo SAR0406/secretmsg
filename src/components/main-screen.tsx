@@ -12,17 +12,17 @@ const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith("gallery-"))
 
 const loveNotes = [
   {
-    icon: <Sparkles className="w-8 h-8 text-accent" />,
+    icon: <Sparkles className="w-10 h-10 text-accent drop-shadow-lg" />,
     title: "My Dearest, 💖",
     message: "Every single moment spent with you is a moment I treasure. Your smile brightens my entire world, and your laughter is the sweetest music to my ears. You are my everything. 🥰",
   },
   {
-    icon: <Gift className="w-8 h-8 text-accent" />,
+    icon: <Gift className="w-10 h-10 text-accent drop-shadow-lg" />,
     title: "Remember When? ✨",
     message: "I'll never forget our first date. The way you looked at me made my heart skip a beat. From that day on, I knew my life had changed forever, and for the better. ❤️",
   },
   {
-    icon: <Star className="w-8 h-8 text-accent" />,
+    icon: <Star className="w-10 h-10 text-accent drop-shadow-lg" />,
     title: "My Promise 💍",
     message: "I promise to always be your biggest fan and your staunchest supporter. I promise to hold your hand through every storm and celebrate every triumph. My love for you is eternal. 🔐",
   },
@@ -40,7 +40,7 @@ const reasonsILoveYou = [
 export default function MainScreen() {
 
   return (
-    <div className="animate-in fade-in-0 duration-1000 bg-background text-foreground min-h-screen">
+    <div className="animate-in fade-in-0 duration-1000 bg-background/50 text-foreground min-h-screen">
       <main className="container mx-auto px-4 py-16 md:py-24 max-w-2xl flex flex-col items-center text-center">
         {ourMomentImage && (
           <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-primary/50 animate-pulse-slow mb-8">
@@ -55,8 +55,13 @@ export default function MainScreen() {
           </div>
         )}
         
-        <h1 className="font-headline text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Eternal Flame</h1>
-        <p className="font-body text-xl md:text-2xl mt-4 text-foreground/80 italic">With all my love, forever.</p>
+        <h1 
+          className="font-headline text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-in fade-in-0"
+          style={{ filter: 'drop-shadow(0 0 1.5rem hsl(var(--primary) / 0.7))' }}
+        >
+          Eternal Flame
+        </h1>
+        <p className="font-body text-xl md:text-2xl mt-4 text-foreground/80 italic">With all my love, forever and always.</p>
 
         <div className="w-full mt-16 md:mt-24 space-y-12">
             <section id="notes">

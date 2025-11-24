@@ -11,7 +11,7 @@ type Particle = {
   spin: number;
 };
 
-const Confetti = () => {
+const Starfield = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isClient, setIsClient] = useState(false);
 
@@ -25,11 +25,11 @@ const Confetti = () => {
     return Array.from({ length: 150 }).map(() => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      size: Math.random() * 7 + 3,
-      speed: Math.random() * 3 + 1,
-      color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 0.5 + 0.2,
+      color: `hsl(${280 + Math.random() * 80}, 100%, ${70 + Math.random() * 20}%)`,
       angle: Math.random() * 360,
-      spin: (Math.random() - 0.5) * 20,
+      spin: (Math.random() - 0.5) * 4,
     }));
   }, [isClient]);
 
@@ -53,24 +53,34 @@ const Confetti = () => {
 
     const currentParticles: Particle[] = JSON.parse(JSON.stringify(particles));
 
+    const drawStar = (p: Particle) => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+            ctx.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI) * p.size, -Math.sin((18 + i * 72) / 180 * Math.PI) * p.size);
+            ctx.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * (p.size / 2), -Math.sin((54 + i * 72) / 180 * Math.PI) * (p.size / 2));
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       currentParticles.forEach(p => {
         p.y += p.speed;
-        p.x += Math.sin(p.y / 20) * 0.5;
-        p.angle += p.spin;
+        p.x += Math.sin(p.y / 40) * 0.2;
+        p.angle += p.spin / 10;
 
         if (p.y > canvas.height) {
           p.y = -20;
           p.x = Math.random() * canvas.width;
         }
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.angle * Math.PI / 180);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-        ctx.restore();
+        
+        drawStar(p);
       });
       animationFrameId = requestAnimationFrame(render);
     };
@@ -86,4 +96,4 @@ const Confetti = () => {
   return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full -z-10" />;
 };
 
-export default Confetti;
+export default Starfield;
